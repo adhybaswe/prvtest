@@ -12,6 +12,28 @@ code {
     monospace;
 }
 
+.profile-cover a{
+  position: relative;
+}
+
+.profile-cover a:hover:before{
+  position: absolute;
+    content: "Ganti Cover";
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 300px;
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-cover a img{
+  height: 300px;
+  object-fit: cover;
+  width: 100%;
+}
+
 .profile-photo{
 	margin-top:-75px;
 	text-align: center;
