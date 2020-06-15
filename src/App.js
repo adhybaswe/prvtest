@@ -11,11 +11,11 @@ function App() {
   return (
     <Router>
         <Switch>
-            <Route path="/">
-                <RegisterLogin />
-            </Route>
             <Route path="/konfirmasiotp">
                 <KonfirmasiOTP />
+            </Route>
+            <Route path="/">
+                <RegisterLogin />
             </Route>
         </Switch>
     </Router>

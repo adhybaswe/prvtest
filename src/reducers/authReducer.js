@@ -4,6 +4,11 @@ export default (state = {auth : false}, action) => {
    return {
     auth: action.payload
    }
+   case 'REGISTER_ACTION':
+   return {
+   	...state,
+    userid: action.payload
+   }
   default:
    return state
  }
