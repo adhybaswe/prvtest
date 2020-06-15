@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.profile-photo{
+	margin-top:-75px;
+	text-align: center;
+}
+
+.profile-photo a{
+	position: relative;
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	border-radius: 50%;
+}
+
+.profile-photo a:hover:before{
+	position: absolute;
+    content: "Ganti Foto";
+    background: rgba(0,0,0,0.5);
+    width: 150px;
+    height: 150px;
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-photo a img{
+	object-fit: cover;
+	width: 150px;
+	height: 150px;
+}
