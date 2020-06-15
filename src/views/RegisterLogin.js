@@ -78,12 +78,12 @@ function RegisterLogin(){
 	}
 
 	return(
-		<div className="container">
-			<div className="row">
-				<div className="col-md-6">
+		<div className="container-fluid">
+			<div className="row bg-primary vh-100">
+				<div className="col-md-6 text-white">
 				  	<FormRegister onSubmit={register} loading={loginLoading} />
 				</div>
-				<div className="col-md-6">					
+				<div className="col-md-6 bg-white border-radius-login">					
 					<FormLogin onSubmit={login} loading={registerLoading} />
 				</div>
 			</div>

@@ -43,7 +43,12 @@ const FormRegister = ({ onSubmit }) => {
 	}
 
 	return(
-		<>
+		<div className="section-form-register bg-primary padding-150px">
+			<h4>
+			  Register 
+			  <small className="text-white"> With faded secondary text</small>
+			</h4>
+			<hr/>
 			<div className="form-group">
 				<label htmlFor="registernomorhp">Nomor HP</label>
 				<input type="text" className="form-control" maxLength="13" required value={nomorhp} onChange={ numberOnly } id="registernomorhp" />
@@ -59,8 +64,8 @@ const FormRegister = ({ onSubmit }) => {
 				<input type="text" className="form-control" required maxLength="13" value={country} onChange={ (e) => setCountry(e.target.value) } id="registercountry" />
 			</div>
 
-			<button type="submit" onClick={onClick} className="btn btn-primary btn-block">REGISTER</button>
-		</>
+			<button type="submit" onClick={onClick} className="btn btn-danger btn-block">REGISTER</button>
+		</div>
 	)
 }
 

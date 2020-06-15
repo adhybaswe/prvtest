@@ -27,7 +27,12 @@ const FormLogin = ({ onSubmit, loading }) => {
 	}
 
 	return(
-		<>
+		<div className="section-form-login padding-150px">
+			<h4>
+			  Login
+			  <small className="text-muted"> With faded secondary text</small>
+			</h4>
+			<hr/>
 			<div className="form-group">
 				<label htmlFor="nomorhp">Nomor HP</label>
 				<input type="text" className="form-control" maxLength="13" value={nomorhp} onChange={ numberOnly } id="nomorhp" />
@@ -38,7 +43,7 @@ const FormLogin = ({ onSubmit, loading }) => {
 				<input type="password" className="form-control" value={password} onChange={ (e) => setPassword(e.target.value) } id="password" />
 			</div>
 			<ButtonLoading onClick={onClick} label="LOGIN" loading={loading} />
-		</>
+		</div>
 	)
 }
 
