@@ -1,5 +1,6 @@
 import React,  { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
+import SectionEducation from '../components/SectionEducation'
 
 const User = () => {
 
@@ -239,22 +240,22 @@ const User = () => {
 					<div className="section-career">
 
 
-					 	<div class="form-group">
+					 	<div className="form-group">
 						    <label htmlFor="companyname">Company Name</label>
 						    <input id="companyname" type="text" value={companyname} onChange={ (e) => setCompanyName(e.target.value) } className="form-control" />
 					  	</div>
 
-					  	<div class="form-group">
+					  	<div className="form-group">
 						    <label htmlFor="position">Position</label>
 						    <input id="position" type="text" value={position} onChange={ (e) => setPosition(e.target.value) } className="form-control" />
 					  	</div>
 
-					  	<div class="form-group">
+					  	<div className="form-group">
 						    <label htmlFor="startingfrom">Starting From</label>
 						    <input id="startingfrom" type="date" value={startingfrom} onChange={ (e) => setStartingFrom(e.target.value) } className="form-control" />
 					  	</div>
 
-					  	<div class="form-group">
+					  	<div className="form-group">
 						    <label htmlFor="endingin">Ending In</label>
 						    <input id="endingin" type="date" value={endingin} onChange={ (e) => setEndingIn(e.target.value) } className="form-control" />
 					  	</div>
@@ -262,7 +263,9 @@ const User = () => {
 					  	<button className="btn btn-primary btn-block" onClick={onSaveCareer}>Save Career</button>
 						
 					</div>
-					
+
+					<SectionEducation accesstoken={accesstoken} SchoolName={data.user.education.school_name} GraduationTime={data.user.education.graduation_time} />
+
 				</div>
 			</div>
 		</div>
