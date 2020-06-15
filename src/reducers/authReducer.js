@@ -7,7 +7,12 @@ export default (state = {auth : false}, action) => {
    case 'REGISTER_ACTION':
    return {
    	...state,
-    userid: action.payload
+    user: action.payload
+   }
+   case 'SET_TOKEN_ACTION':
+   return {
+   	...state,
+    token: action.payload
    }
   default:
    return state

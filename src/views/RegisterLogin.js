@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import FormLogin from '../components/FormLogin'
 import FormRegister from '../components/FormRegister'
 import axios from 'axios';
-import { registerAction } from '../actions/authAction'
+import { registerAction, setTokenAction} from '../actions/authAction'
 import { useHistory } from "react-router-dom";
 
 function RegisterLogin(){
@@ -11,6 +11,8 @@ function RegisterLogin(){
 	const dispatch = useDispatch()
 	const history = useHistory();
 	const [error,setError] = useState([])
+	const [loginLoading,setLoginLoading] = useState(false)
+	const [registerLoading,setRegisterLoading] = useState(false)
 	
 	const register = (data) => {
 			axios({
@@ -27,7 +29,7 @@ function RegisterLogin(){
 			    if(response.status === 201){
 			    	let id = response.data.data.user.id
 			    	localStorage.setItem('userid', id)
-			    	dispatch(registerAction(id))
+			    	dispatch(registerAction({userid : id,phone : data.get('phone')}))
 			    	history.push('/konfirmasiotp')
 			    }else{
 			    	setError(response.data.data.error.errors)
@@ -39,6 +41,7 @@ function RegisterLogin(){
 	}
 
 	const login = (data) => {
+		setLoginLoading(true)
 		axios({
 			  	method: 'post',
 			  	data: data,
@@ -50,20 +53,23 @@ function RegisterLogin(){
 			  	url: process.env.REACT_APP_API_BASE_URL+'api/v1/oauth/sign_in'
 			})
 		  	.then(function (response) {
-			    if(response.status === 200){
-			    	let id = response.data.data.user.id
-			    	localStorage.setItem('access', id)
-			    	dispatch(registerAction(id))
+		  		// setLoginLoading(false)
+		  		// console.log(response)
+			    if(response.status === 201){
+			    	let token = response.data.data.user.access_token
+		  			localStorage.setItem('token', token)
+		  			dispatch(setTokenAction(token))
 			    	history.push('/user')
 			    }else{
 			    	setError(response.data.data.error.errors)
 			    }
 		  	})
 		  	.catch(function (error) {
+		  		setLoginLoading(false)
 		  		if(error.response.status == 401){
 		  			let id = error.response.data.error.errors[0].user_id
 		  			localStorage.setItem('userid', id)
-		  			dispatch(registerAction(id))
+		  			dispatch(registerAction({userid:id,phone : data.get('phone')}))
 		  			history.push('/konfirmasiotp')
 		  		}else{
 		  			alert(error.response.data.error.errors.join('\n'))
@@ -75,10 +81,10 @@ function RegisterLogin(){
 		<div className="container">
 			<div className="row">
 				<div className="col-md-6">
-				  	<FormRegister onSubmit={register} />
+				  	<FormRegister onSubmit={register} loading={loginLoading} />
 				</div>
 				<div className="col-md-6">					
-					<FormLogin onSubmit={login} />
+					<FormLogin onSubmit={login} loading={registerLoading} />
 				</div>
 			</div>
 		</div>

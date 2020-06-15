@@ -9,3 +9,10 @@ export const registerAction = (payload) => {
 	  payload: payload,
  	}
 } 
+
+export const setTokenAction = (payload) => {
+	return {
+	  type: 'SET_TOKEN_ACTION',
+	  payload: payload,
+ 	}
+} 

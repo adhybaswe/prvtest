@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import RegisterLogin from './views/RegisterLogin';
 import KonfirmasiOTP from './views/KonfirmasiOTP';
+import User from './views/User';
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
         <Switch>
             <Route path="/konfirmasiotp">
                 <KonfirmasiOTP />
+            </Route>
+            <Route path="/user">
+                <User />
             </Route>
             <Route path="/">
                 <RegisterLogin />

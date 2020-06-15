@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
+import ButtonLoading from './ButtonLoading'
 
-const FormLogin = ({ onSubmit }) => {
+const FormLogin = ({ onSubmit, loading }) => {
 
 	const [nomorhp,setNomorHP] = useState("")
 	const [password,setPassword] = useState("")
@@ -36,8 +37,7 @@ const FormLogin = ({ onSubmit }) => {
 				<label htmlFor="password">Password</label>
 				<input type="password" className="form-control" value={password} onChange={ (e) => setPassword(e.target.value) } id="password" />
 			</div>
-
-			<button type="submit" onClick={onClick} className="btn btn-primary btn-block">LOGIN</button>
+			<ButtonLoading onClick={onClick} label="LOGIN" loading={loading} />
 		</>
 	)
 }
