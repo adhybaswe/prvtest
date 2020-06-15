@@ -2,9 +2,10 @@ import React,  { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import SectionEducation from '../components/SectionEducation'
 import SectionCareer from '../components/SectionCareer'
+import { useHistory } from "react-router-dom";
 
 const User = () => {
-
+	const history = useHistory();
 	const inputFile = useRef(null);
 	const inputMultipleFile = useRef(null);
 	const inputCoverFile = useRef(null);
@@ -33,7 +34,8 @@ const User = () => {
 		   setData(response.data.data)
 	  	})
 	  	.catch(function (error) {
-	  		console.log(error)
+	  		localStorage.clear();
+	  		history.push('/')
 	  	});
  
 	  }, []);
@@ -41,6 +43,11 @@ const User = () => {
 	const uploadpicture = (e) => {
 		e.preventDefault()
 		inputFile.current.click()
+	}
+
+	const onLogout = (e) => {
+		localStorage.clear();
+		history.push('/')
 	}
 
 	const onCoverChange = (e) => {
@@ -200,6 +207,7 @@ const User = () => {
 
 					<SectionEducation accesstoken={accesstoken} SchoolName={data.user.education.school_name} GraduationTime={data.user.education.graduation_time} />
 
+					<button onClick={onLogout} className="btn btn-danger btn-block">Logout</button>
 				</div>
 			</div>
 		</div>
