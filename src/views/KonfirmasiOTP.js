@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect,useState} from 'react'
 import { useSelector } from 'react-redux';
 import PinInput from 'react-pin-input';
 import axios from 'axios';
@@ -40,6 +40,14 @@ const KonfirmasiOTP = () => {
 		  		console.log(error)
 		  	});
 	}
+
+	useEffect(() => {
+		let userid = localStorage.getItem('userid',null)
+		console.log(userid)
+		if(userid === null){
+			history.push('/')
+		}
+	  }, []);
 
 	const onRequest = (e) => {
 		e.preventDefault()
