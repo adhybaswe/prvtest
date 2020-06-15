@@ -65,3 +65,42 @@ code {
 	width: 150px;
 	height: 150px;
 }
+
+.list-photos{
+  display: flex;
+  justify-content: center;
+}
+
+.list-photos .photo-item{
+  width:75px;
+  height: 75px;
+}
+
+.list-photos .photo-item img{
+  object-fit: cover;
+  width: 75px;
+  height: 75px;
+  opacity: 0.5;
+}
+
+.list-photos .photo-item img:hover{
+  opacity: 1;
+}
+
+.list-photos .photo-item.photoadd{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: #fff;
+  font-weight: 800;
+  background: #444;
+}
+
+.list-photos .photo-item.photoadd a{
+  color: #fff;
+}
+
+.list-photos .photo-item.photoadd a:hover{
+  text-decoration: none;
+}
