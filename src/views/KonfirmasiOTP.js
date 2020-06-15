@@ -33,6 +33,7 @@ const KonfirmasiOTP = () => {
 		  			let token = response.data.data.user.access_token
 		  			localStorage.setItem('token', token)
 		  			dispatch(setTokenAction(token))
+		  			history.push('/user')
 		  		}
 		  	})
 		  	.catch(function (error) {
@@ -63,15 +64,18 @@ const KonfirmasiOTP = () => {
 	}
 
 	return(
-		<div className="container">
-			<div className="row">
-				<div className="col-md-4">
+		<div className="container-fluid">
+			<div className="custom-header bg-primary"></div>
+			<div className="row min50top justify-content-center">
+				<div className="col-md-4 text-center bg-white border-radius-50 p-5">
+					<h5 className="mb-4">We have sent you an access code via sms for mobile number verifications</h5>
+					<small>enter code here</small>
 				  	<PinInput 
 					  length={4} 
 					  initialValue=""
 					  type="numeric" 
+					  inputStyle={{borderColor: '#aaa'}}
 					  style={{padding: '10px',textAlign:'center'}}  
-					  inputStyle={{borderColor: 'red'}}
 					  inputFocusStyle={{borderColor: 'blue'}}
 					  onComplete={ (value,index) => { setCode(value) } }
 					/>

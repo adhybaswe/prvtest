@@ -29,6 +29,7 @@ function RegisterLogin(){
 			    if(response.status === 201){
 			    	let id = response.data.data.user.id
 			    	localStorage.setItem('userid', id)
+			    	localStorage.setItem('userphone', data.get('phone'))
 			    	dispatch(registerAction({userid : id,phone : data.get('phone')}))
 			    	history.push('/konfirmasiotp')
 			    }else{
@@ -69,6 +70,7 @@ function RegisterLogin(){
 		  		if(error.response.status == 401){
 		  			let id = error.response.data.error.errors[0].user_id
 		  			localStorage.setItem('userid', id)
+		  			localStorage.setItem('userphone', data.get('phone'))
 		  			dispatch(registerAction({userid:id,phone : data.get('phone')}))
 		  			history.push('/konfirmasiotp')
 		  		}else{

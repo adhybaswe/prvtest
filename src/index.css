@@ -132,3 +132,16 @@ code {
 .border-radius-login{
   border-radius: 50px 0 0 50px;
 }
+
+.custom-header{
+  width: 100%;
+  height: 200px;
+}
+
+.min50top{
+  margin-top:-50px;
+}
+
+.border-radius-50{
+  border-radius: 50px;
+}
